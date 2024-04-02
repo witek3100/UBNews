@@ -1,11 +1,19 @@
+import asyncio
 
 from src.news_fetcher.video_finder import VideoFinder
 from src.news_fetcher.video_loader import VideoLoader
-from src.utils import mongo_client
+from src.utils import mongo_client, sources_collection
 
 
-vf = VideoFinder()
-videos = vf.get_videos()
+if __name__ == "__main__":
+    vf = VideoFinder()
+    videos = vf.get_videos()
+    print(f"{len(videos)} videos found")
 
-vl = VideoLoader([{'url': 'https://www.youtube.com/watch?v=pn-dD5BzPLY', 'ts': '2020-05-27T14'}])
-data = vl.load()
+    vl = VideoLoader(videos)
+    data = asyncio.run(vl.load())
+
+    # for chunk in data:
+    #     sources_collection.insert_chunk(chunk)
+
+

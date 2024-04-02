@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from src.utils import config
 
 class VideoFinder:
-    def __init__(self, channels=config['yt-channels'], time_d=2, max_videos=None):
+    def __init__(self, channels=config['yt-channels'], time_d=1, max_videos=None):
         self.channels = channels
         self.time_delta = timedelta(days=time_d)
         self.youtube_client = build(
@@ -40,7 +40,7 @@ class VideoFinder:
                 for video in results:
                     video_date = datetime.strptime(video['snippet']['publishedAt'], "%Y-%m-%dT%H:%M:%SZ")
                     time_d = datetime.utcnow() - video_date
-                    if time_d < timedelta(days=2):
+                    if time_d < self.time_delta:
                         video_id = video['snippet']['resourceId']['videoId']
                         video = {
                             "url": f"https://www.youtube.com/watch?v={video_id}",
