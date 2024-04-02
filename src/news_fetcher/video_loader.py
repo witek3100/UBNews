@@ -29,7 +29,6 @@ class VideoLoader:
 
             print('chunking transcript')
             chunks = self._chunk_transcript(transcript.text)
-            print(chunks)
 
             print('generating chunks embeddings')
             for chunk in chunks:
@@ -47,6 +46,8 @@ class VideoLoader:
         tokens = text.split(' ')
         chunks = []
         while tokens:
+            if len(tokens) < self.chunk_overlap:
+                break
             chunk = ' '.join(tokens[:self.chunk_size])
             chunks.append(chunk)
             del tokens[:self.chunk_size - self.chunk_overlap]
