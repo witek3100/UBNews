@@ -1,20 +1,20 @@
 {
   "youtube-api": {
-    "api-key": "AIzaSyA7eF5uhW6xavkkmM-R0B2TZrk0C5zefsg"
+    "api-key": ""
   },
   "yt-channels": [
     "UCzQZbOb86WvhOPoR7jgAfsA",
     "UCc282c_TN8xIba_Z6GaDnQw"
   ],
   "assembly-ai": {
-    "api-key": "0bab05a70c70492d859432217554abee"
+    "api-key": ""
   },
   "chunking": {
     "chunk-size": 100,
     "chunk-overlap": 20
   },
   "mongo": {
-    "uri": "mongodb+srv://admin:admin@chat-agh-db.75uebyb.mongodb.net",
+    "uri": "",
     "db": "UBNews"
   }
 }
